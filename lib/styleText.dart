@@ -11,7 +11,7 @@ class StyledText extends StatelessWidget{
               outputText,
               style: const TextStyle(
                 color: Color.fromARGB(255, 255, 255, 255),
-                fontSize: 28,
+                fontSize: 25,
               ),
             );
   }

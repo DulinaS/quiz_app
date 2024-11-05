@@ -1,19 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/questions_screen.dart';
 import 'package:quiz_app/start_screen.dart';
 
-class GradientContainer extends StatelessWidget {
-  const GradientContainer(this.color1, this.color2, {super.key});
+class GradientContainer extends StatefulWidget {
 
-  //Additional Constructor for predefined colors
-  const GradientContainer.purple({super.key})
-      : color1 = Colors.deepPurple,
-        color2 = Colors.indigo;
+  const GradientContainer({super.key});
+  
+  @override
+  State<GradientContainer> createState() {
+    return _GradientContainerState.purple(); //Returns a state with pre-defined colours
+  }
+  
+}
 
+class _GradientContainerState extends State<GradientContainer>{
+  
   //final List<Color> colors;
   final Color color1;
   final Color color2;
-  
 
+  //Another Constructor that accepts user given colours
+  _GradientContainerState(this.color1, this.color2);
+
+  //Create Constructor that sets Colors of gradient
+  _GradientContainerState.purple()
+      : color1 = Colors.deepPurple,
+        color2 = Colors.indigo;
+
+  Widget activeScreen = const StartScreen();
+  
+  void switchScreen(){
+    setState(() {
+      activeScreen = const QuestionsScreen();
+    });
+  }
   @override
   Widget build(context) {
     return Container(
@@ -25,8 +45,9 @@ class GradientContainer extends StatelessWidget {
         ),
       ),
       child: Center(
-        child: StartScreen(),
+        child: activeScreen,
       ),
     );
   }
+
 }

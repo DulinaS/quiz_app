@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/gradient_container.dart';
+import 'package:quiz_app/quiz.dart';
 
 void main() {
-  runApp(
-    const MaterialApp(
-      home: Scaffold(
-        body: GradientContainer.purple(),
-      ),
-    ),
-  );
+  //Quiz class eken return krnne MaterialApp ekak so mekata Quiz()
+  runApp(const Quiz());
 }

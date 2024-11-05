@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/questions_screen.dart';
 import 'package:quiz_app/styleText.dart';
 
 class StartScreen extends StatefulWidget {
-  const StartScreen({super.key});
+  const StartScreen(this.startQuiz ,{super.key});
+
+  final Function() startQuiz;
 
   @override
   State<StartScreen> createState() {
-    return _StartScreenState();
+    return _StartScreenState(startQuiz);
   }
 }
 
 class _StartScreenState extends State<StartScreen> {
-  void startScreen() {
-    setState(() {
-      const QuestionsScreen();
-    });
-  }
+  //Create a state class constructor that accepts function as a parameter
+  _StartScreenState(this.startQuiz);
+
+  final Function() startQuiz;
 
   @override
   Widget build(context) {
@@ -29,10 +29,10 @@ class _StartScreenState extends State<StartScreen> {
           color: const Color.fromARGB(150, 255, 255, 255),
         ),
         const SizedBox(height: 30),
-        const StyledText('Learn flutter the fun way!!!!'),
+        const StyledText('Learn flutter the fun way!!'),
         const SizedBox(height: 30),
         OutlinedButton.icon(
-          onPressed: startScreen,
+          onPressed: startQuiz,
           style: OutlinedButton.styleFrom(
             foregroundColor: Colors.white,
             textStyle: const TextStyle(

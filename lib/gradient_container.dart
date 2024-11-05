@@ -27,8 +27,14 @@ class _GradientContainerState extends State<GradientContainer>{
       : color1 = Colors.deepPurple,
         color2 = Colors.indigo;
 
-  Widget activeScreen = const StartScreen();
+  Widget? activeScreen;
   
+  @override
+  void initState() {
+    activeScreen = StartScreen(switchScreen);
+    super.initState();
+  }
+
   void switchScreen(){
     setState(() {
       activeScreen = const QuestionsScreen();

@@ -35,6 +35,13 @@ class _GradientContainerState extends State<GradientContainer> {
 
   @override
   Widget build(context) {
+    //Using IF condition to switch between screen
+    Widget screenWidget = StartScreen(switchScreen);
+
+    if(activeScreen == 'start-screen'){
+      screenWidget = const QuestionsScreen();
+    }
+
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -44,9 +51,7 @@ class _GradientContainerState extends State<GradientContainer> {
         ),
       ),
       child: Center(
-        child: activeScreen == 'start-screen'
-            ? StartScreen(switchScreen)
-            : const QuestionsScreen(),
+        child: screenWidget,
       ),
     );
   }

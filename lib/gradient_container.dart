@@ -38,7 +38,7 @@ class _GradientContainerState extends State<GradientContainer> {
     //Using IF condition to switch between screen
     Widget screenWidget = StartScreen(switchScreen);
 
-    if(activeScreen == 'start-screen'){
+    if(activeScreen == 'question-screen'){
       screenWidget = const QuestionsScreen();
     }
 

@@ -26,7 +26,7 @@ class _GradientContainerState extends State<GradientContainer> {
         color2 = Colors.indigo;
 
   //Stores the selected answers and store to a list
-  var selectedAnswers = [];
+  final List<String> selectedAnswers = [];
 
   var activeScreen = 'start-screen';
 
@@ -36,13 +36,18 @@ class _GradientContainerState extends State<GradientContainer> {
     });
   }
 
+  //Add selected answers to list
+  void chooseAnswer(String answer){
+    selectedAnswers.add(answer);
+  }
+
   @override
   Widget build(context) {
     //Using IF condition to switch between screen
     Widget screenWidget = StartScreen(switchScreen);
 
     if(activeScreen == 'question-screen'){
-      screenWidget = const QuestionsScreen();
+      screenWidget = QuestionsScreen(chooseAnswer);
     }
 
     return Container(

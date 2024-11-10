@@ -25,6 +25,9 @@ class _GradientContainerState extends State<GradientContainer> {
       : color1 = Colors.deepPurple,
         color2 = Colors.indigo;
 
+  //Stores the selected answers and store to a list
+  var selectedAnswers = [];
+
   var activeScreen = 'start-screen';
 
   void switchScreen() {

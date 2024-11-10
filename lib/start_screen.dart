@@ -29,7 +29,7 @@ class _StartScreenState extends State<StartScreen> {
           color: const Color.fromARGB(150, 255, 255, 255),
         ),
         const SizedBox(height: 30),
-        const StyledText('Learn flutter the fun way!!!!'),
+        const StyledText('Learn flutter the fun way!'),
         const SizedBox(height: 30),
         OutlinedButton.icon(
           onPressed: startQuiz,

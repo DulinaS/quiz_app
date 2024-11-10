@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/questions_screen.dart';
 import 'package:quiz_app/start_screen.dart';
+import 'package:quiz_app/data/questions.dart';
 
 class GradientContainer extends StatefulWidget {
   const GradientContainer({super.key});
@@ -26,7 +27,7 @@ class _GradientContainerState extends State<GradientContainer> {
         color2 = Colors.indigo;
 
   //Stores the selected answers and store to a list
-  final List<String> selectedAnswers = [];
+  List<String> selectedAnswers = [];
 
   var activeScreen = 'start-screen';
 
@@ -39,6 +40,13 @@ class _GradientContainerState extends State<GradientContainer> {
   //Add selected answers to list
   void chooseAnswer(String answer){
     selectedAnswers.add(answer);
+
+    if(selectedAnswers.length == questions.length){
+      setState(() {
+        selectedAnswers = [];
+        activeScreen = 'start-screen';
+      });
+    }
   }
 
   @override

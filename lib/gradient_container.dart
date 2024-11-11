@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/questions_screen.dart';
 import 'package:quiz_app/start_screen.dart';
 import 'package:quiz_app/data/questions.dart';
+import 'package:quiz_app/result_screen.dart';
 
 class GradientContainer extends StatefulWidget {
   const GradientContainer({super.key});
@@ -44,7 +45,7 @@ class _GradientContainerState extends State<GradientContainer> {
     if(selectedAnswers.length == questions.length){
       setState(() {
         selectedAnswers = [];
-        activeScreen = 'start-screen';
+        activeScreen = 'result-screen';
       });
     }
   }
@@ -53,9 +54,15 @@ class _GradientContainerState extends State<GradientContainer> {
   Widget build(context) {
     //Using IF condition to switch between screen
     Widget screenWidget = StartScreen(switchScreen);
-
+    
+    //Change screen to Question Screen
     if(activeScreen == 'question-screen'){
       screenWidget = QuestionsScreen(chooseAnswer);
+    }
+
+    //Change screen to Result Screen
+    if(activeScreen == 'result-screen'){
+      screenWidget = const ResultScreen();
     }
 
     return Container(

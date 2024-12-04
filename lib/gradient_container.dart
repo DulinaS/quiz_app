@@ -62,7 +62,7 @@ class _GradientContainerState extends State<GradientContainer> {
 
     //Change screen to Result Screen
     if(activeScreen == 'result-screen'){
-      screenWidget = const ResultScreen();
+      screenWidget = ResultScreen(chosenAnswers: selectedAnswers); //Passed the list to the named argument chosenAnswers
     }
 
     return Container(

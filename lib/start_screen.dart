@@ -25,7 +25,7 @@ class _StartScreenState extends State<StartScreen> {
       children: [
         Image.asset(
           'assets/images/quiz-logo.png',
-          width: 300,
+          width: 30,
           color: const Color.fromARGB(150, 255, 255, 255),
         ),
         const SizedBox(height: 30),

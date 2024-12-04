@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ResultScreen extends StatelessWidget {
-  const ResultScreen({super.key});
+  const ResultScreen({super.key , required this.chosenAnswers}); //as a named argument
+
+  //Results screen will accept the user selected answers list from gradientContainer
+  final List<String> chosenAnswers;
 
   @override
   Widget build(BuildContext context) {

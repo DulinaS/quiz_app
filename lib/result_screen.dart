@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/data/questions.dart';
+import 'package:quiz_app/questions_summary.dart';
 
 class ResultScreen extends StatelessWidget {
   const ResultScreen(
@@ -8,6 +9,7 @@ class ResultScreen extends StatelessWidget {
   //Results screen will accept the user selected answers list from gradientContainer
   final List<String> chosenAnswers;
 
+  //Generate Summary of All Q and A s
   List<Map<String, Object>> getSummaryData() {
     final List<Map<String, Object>> summary = [];
 
@@ -15,8 +17,7 @@ class ResultScreen extends StatelessWidget {
       summary.add(
         {
           'question_index': i, //Adds the question index
-          'question':
-              questions[i].text, //Adds each question one by one to the map
+          'question': questions[i].text, //Adds each question one by one to the map
           'correct_answer': questions[i].answers[0], //we assume first answer in questions list is the correct answer
           'user_answer': chosenAnswers[i] //we collect user selected answers because we display the questions from start
                                           // So we load the display from questions list from start answer won;t get mixed
@@ -40,7 +41,8 @@ class ResultScreen extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            const Text('list of answers and questions'),
+            //const Text('list of answers and questions'),
+            QuestionsSummary(getSummaryData()),
             const SizedBox(
               height: 30,
             ),

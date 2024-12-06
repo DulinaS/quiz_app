@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/questions_summary.dart';
 
@@ -17,10 +18,13 @@ class ResultScreen extends StatelessWidget {
       summary.add(
         {
           'question_index': i, //Adds the question index
-          'question': questions[i].text, //Adds each question one by one to the map
-          'correct_answer': questions[i].answers[0], //we assume first answer in questions list is the correct answer
-          'user_answer': chosenAnswers[i] //we collect user selected answers because we display the questions from start
-                                          // So we load the display from questions list from start answer won;t get mixed
+          'question':
+              questions[i].text, //Adds each question one by one to the map
+          'correct_answer': questions[i].answers[
+              0], //we assume first answer in questions list is the correct answer
+          'user_answer': chosenAnswers[
+              i] //we collect user selected answers because we display the questions from start
+          // So we load the display from questions list from start answer won;t get mixed
         },
       );
     }
@@ -31,13 +35,13 @@ class ResultScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final summaryData = getSummaryData();
-    final numTotalQuestions = questions.length; //gives number of questions in quiz
-    
+    final numTotalQuestions =
+        questions.length; //gives number of questions in quiz
+
     //filters and give the correcct answer number from comparing the sumamryData list's correct answer and user entered answer
-    final numCorrectQuestions = summaryData.where((data){
+    final numCorrectQuestions = summaryData.where((data) {
       return data['user_answer'] == data['correct_answer'];
     }).length;
-
 
     return SizedBox(
       width: double.infinity,
@@ -46,7 +50,15 @@ class ResultScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('You answers $numCorrectQuestions out of $numTotalQuestions questions correct!',),
+            Text(
+              'You answers $numCorrectQuestions out of $numTotalQuestions questions correct!',
+              style: GoogleFonts.lato(
+                color: const Color.fromARGB(255, 203, 143, 253),
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
             const SizedBox(
               height: 30,
             ),
@@ -55,7 +67,16 @@ class ResultScreen extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            TextButton(onPressed: () {}, child: const Text('Restart Quiz!'))
+            TextButton.icon(
+                onPressed: () {},
+                style: TextButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  textStyle: const TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+                icon: const Icon(Icons.restart_alt_rounded),
+                label: const Text('Restart Quiz!'))
           ],
         ),
       ),

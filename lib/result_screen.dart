@@ -4,11 +4,17 @@ import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/questions_summary.dart';
 
 class ResultScreen extends StatelessWidget {
-  const ResultScreen(
-      {super.key, required this.chosenAnswers}); //as a named argument
+  const ResultScreen({
+    super.key,
+    required this.chosenAnswers,
+    required this.onRestart,
+  }); //as a named argument
 
   //Results screen will accept the user selected answers list from gradientContainer
   final List<String> chosenAnswers;
+  
+  //This function handles whether to restart the quiz or not
+  final void Function() onRestart;
 
   //Generate Summary of All Q and A s
   List<Map<String, Object>> getSummaryData() {
@@ -68,7 +74,7 @@ class ResultScreen extends StatelessWidget {
               height: 30,
             ),
             TextButton.icon(
-                onPressed: () {},
+                onPressed: onRestart,
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.white,
                   textStyle: const TextStyle(

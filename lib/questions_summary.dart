@@ -23,9 +23,7 @@ class QuestionsSummary extends StatelessWidget {
           children: summaryData.map(
             (data) {
               return Row(
-                crossAxisAlignment:
-                    CrossAxisAlignment.baseline, // Align by text baseline
-                textBaseline: TextBaseline.alphabetic,
+                crossAxisAlignment:CrossAxisAlignment.start,
                 children: [
                   Container(
                     width: 30, // Diameter of the circle

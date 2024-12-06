@@ -39,10 +39,10 @@ class _GradientContainerState extends State<GradientContainer> {
   }
 
   //Add selected answers to list
-  void chooseAnswer(String answer){
+  void chooseAnswer(String answer) {
     selectedAnswers.add(answer);
 
-    if(selectedAnswers.length == questions.length){
+    if (selectedAnswers.length == questions.length) {
       setState(() {
         //selectedAnswers = [];
         activeScreen = 'result-screen';
@@ -50,19 +50,30 @@ class _GradientContainerState extends State<GradientContainer> {
     }
   }
 
+  //Restart the quiz and set the screen to questions screen
+  void restartQuiz() {
+    setState(() {
+      selectedAnswers = []; //empty the already given answers
+      activeScreen = 'question-screen';
+    });
+  }
+
   @override
   Widget build(context) {
     //Using IF condition to switch between screen
     Widget screenWidget = StartScreen(switchScreen);
-    
+
     //Change screen to Question Screen
-    if(activeScreen == 'question-screen'){
+    if (activeScreen == 'question-screen') {
       screenWidget = QuestionsScreen(chooseAnswer);
     }
 
     //Change screen to Result Screen
-    if(activeScreen == 'result-screen'){
-      screenWidget = ResultScreen(chosenAnswers: selectedAnswers); //Passed the list to the named argument chosenAnswers
+    if (activeScreen == 'result-screen') {
+      screenWidget = ResultScreen(
+        chosenAnswers: selectedAnswers,
+        onRestart: restartQuiz,
+      ); //Passed the list to the named argument chosenAnswers
     }
 
     return Container(

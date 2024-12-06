@@ -17,32 +17,27 @@ class ResultScreen extends StatelessWidget {
   final void Function() onRestart;
 
   //Generate Summary of All Q and A s
-  List<Map<String, Object>> getSummaryData() {
+  List<Map<String, Object>>  get summaryData {
     final List<Map<String, Object>> summary = [];
 
     for (var i = 0; i < chosenAnswers.length; i++) {
       summary.add(
         {
           'question_index': i, //Adds the question index
-          'question':
-              questions[i].text, //Adds each question one by one to the map
-          'correct_answer': questions[i].answers[
-              0], //we assume first answer in questions list is the correct answer
-          'user_answer': chosenAnswers[
-              i] //we collect user selected answers because we display the questions from start
-          // So we load the display from questions list from start answer won;t get mixed
-        },
-      );
+          'question': questions[i].text, //Adds each question one by one to the map
+          'correct_answer': questions[i].answers[0], //we assume first answer in questions list is the correct answer
+          'user_answer': chosenAnswers[i] //we collect user selected answers because we display the questions from start
+                                          // So we load the display from questions list from start answer won;t get mixed
+        },);
     }
-
     return summary;
   }
 
   @override
   Widget build(BuildContext context) {
-    final summaryData = getSummaryData();
-    final numTotalQuestions =
-        questions.length; //gives number of questions in quiz
+    //final summaryData = SummaryData;
+    
+    final numTotalQuestions =questions.length; //gives number of questions in quiz
 
     //filters and give the correcct answer number from comparing the sumamryData list's correct answer and user entered answer
     final numCorrectQuestions = summaryData.where((data) {
